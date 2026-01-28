@@ -6,15 +6,28 @@ type DrinkType = 'Cerveja' | 'Destilados' | 'Água';
 type VibeType = 'Moderado' | 'Inimigo do Fim';
 
 const CoolerCalculator: React.FC = () => {
-  const [selectedDrinks, setSelectedDrinks] = useState<DrinkType[]>(['Cerveja', 'Água']);
+  const [selectedDrinks, setSelectedDrinks] = useState<DrinkType[]>([]);
   const [vibe, setVibe] = useState<VibeType>('Moderado');
+  const [showResult, setShowResult] = useState(false);
 
   const toggleDrink = (drink: DrinkType) => {
+    setShowResult(false);
     setSelectedDrinks((prev) =>
       prev.includes(drink) 
         ? prev.filter((d) => d !== drink) 
         : [...prev, drink]
     );
+  };
+
+  const handleVibeChange = (newVibe: VibeType) => {
+    setShowResult(false);
+    setVibe(newVibe);
+  };
+
+  const handleCalculate = () => {
+    if (selectedDrinks.length > 0) {
+      setShowResult(true);
+    }
   };
 
   const calculation = useMemo(() => {
@@ -142,7 +155,7 @@ const CoolerCalculator: React.FC = () => {
                    return (
                     <button
                       key={level}
-                      onClick={() => setVibe(level)}
+                      onClick={() => handleVibeChange(level)}
                       className={`
                         flex items-center justify-center py-4 px-4 md:py-5 md:px-6 border-4 font-display uppercase tracking-wider text-sm md:text-base transition-all
                         ${isSelected
@@ -158,6 +171,20 @@ const CoolerCalculator: React.FC = () => {
                 })}
               </div>
             </div>
+
+            {/* Botão Calcular */}
+            <button
+              onClick={handleCalculate}
+              disabled={selectedDrinks.length === 0}
+              className={`w-full py-4 md:py-6 font-display text-xl md:text-3xl uppercase tracking-widest transition-all border-4 
+                ${selectedDrinks.length > 0 
+                  ? 'bg-[#D12E4B] text-white border-[#D12E4B] hover:bg-white hover:text-[#D12E4B] shadow-[6px_6px_0px_0px_#FF66C4] cursor-pointer' 
+                  : 'bg-white/10 text-white/30 border-white/10 cursor-not-allowed'
+                }`}
+            >
+              {selectedDrinks.length === 0 ? 'Selecione as bebidas' : 'Calcular Cooler'}
+            </button>
+
           </div>
 
           {/* --- COLUNA DIREITA: PAINEL DE RESULTADO (5 colunas) --- */}
@@ -165,90 +192,103 @@ const CoolerCalculator: React.FC = () => {
           <div className="lg:col-span-5 relative h-full">
             <div className="lg:sticky lg:top-32 transition-all duration-300">
               
-              {/* O "Ticket" de Resultado */}
-              <div className="bg-white text-[#005C53] p-6 md:p-8 border-4 border-[#005C53] shadow-[8px_8px_0px_0px_#FF9E1B] md:shadow-[12px_12px_0px_0px_#FF9E1B] relative">
-                
-                {/* Header do Ticket */}
-                <div className="flex justify-between items-start mb-6 border-b-4 border-dashed border-[#005C53]/20 pb-4">
-                  <div>
-                    <h3 className="font-display text-2xl md:text-3xl uppercase leading-none mb-1">Seu Cooler</h3>
-                    <p className="text-xs md:text-sm font-bold opacity-60 uppercase tracking-widest">Lista Sugerida</p>
-                  </div>
-                  <Sparkles className="text-[#FF66C4] w-6 h-6 md:w-8 md:h-8" />
-                </div>
-
-                {/* Lista de Itens */}
-                <ul className="space-y-4 md:space-y-5 mb-6 md:mb-8">
-                  {selectedDrinks.includes('Cerveja') && (
-                    <li className="flex justify-between items-end group">
-                      <div className="flex items-center gap-2 md:gap-3">
-                        <Beer className="text-[#FF9E1B] w-5 h-5 md:w-6 md:h-6" />
-                        <span className="font-bold text-base md:text-lg">Cerveja</span>
-                      </div>
-                      <div className="flex-1 border-b-2 border-dashed border-[#005C53]/20 mx-2 md:mx-3 mb-1 opacity-30"></div>
-                      <span className="font-display text-xl md:text-2xl text-[#D12E4B]">{calculation.beer} <span className="text-xs md:text-sm text-[#005C53]">latas</span></span>
-                    </li>
-                  )}
+              {showResult ? (
+                /* O "Ticket" de Resultado */
+                <div className="bg-white text-[#005C53] p-6 md:p-8 border-4 border-[#005C53] shadow-[8px_8px_0px_0px_#FF9E1B] md:shadow-[12px_12px_0px_0px_#FF9E1B] relative animate-in zoom-in duration-300">
                   
-                  {selectedDrinks.includes('Destilados') && (
-                    <>
-                      <li className="flex justify-between items-end">
-                        <div className="flex items-center gap-2 md:gap-3">
-                          <GlassWater className="text-[#FF9E1B] w-5 h-5 md:w-6 md:h-6" />
-                          <span className="font-bold text-base md:text-lg">Destilado</span>
-                        </div>
-                        <div className="flex-1 border-b-2 border-dashed border-[#005C53]/20 mx-2 md:mx-3 mb-1 opacity-30"></div>
-                        <span className="font-display text-lg md:text-xl text-[#D12E4B]">{calculation.spirits}</span>
-                      </li>
-                      <li className="flex justify-between items-end">
-                        <div className="flex items-center gap-2 pl-2 opacity-70">
-                          <span className="font-bold text-xs md:text-sm uppercase">↳ Mixer</span>
-                        </div>
-                        <div className="flex-1 border-b-2 border-dashed border-[#005C53]/20 mx-2 md:mx-3 mb-1 opacity-30"></div>
-                        <span className="font-bold text-xs md:text-sm text-[#005C53] uppercase">{calculation.mixers}</span>
-                      </li>
-                    </>
-                  )}
-
-                  <li className="flex justify-between items-end">
-                    <div className="flex items-center gap-2 md:gap-3">
-                      <Droplets className="text-[#FF9E1B] w-5 h-5 md:w-6 md:h-6" />
-                      <span className="font-bold text-base md:text-lg">Água</span>
+                  {/* Header do Ticket */}
+                  <div className="flex justify-between items-start mb-6 border-b-4 border-dashed border-[#005C53]/20 pb-4">
+                    <div>
+                      <h3 className="font-display text-2xl md:text-3xl uppercase leading-none mb-1">Seu Cooler</h3>
+                      <p className="text-xs md:text-sm font-bold opacity-60 uppercase tracking-widest">Lista Sugerida</p>
                     </div>
-                    <div className="flex-1 border-b-2 border-dashed border-[#005C53]/20 mx-2 md:mx-3 mb-1 opacity-30"></div>
-                    <span className="font-display text-xl md:text-2xl text-[#D12E4B]">{calculation.water} <span className="text-xs md:text-sm text-[#005C53]">garrafas</span></span>
-                  </li>
-
-                  <li className="pt-3 md:pt-4 mt-3 md:mt-4 border-t-4 border-dashed border-[#005C53]/10">
-                    <div className="flex justify-between items-end">
-                        <div className="flex items-center gap-2 md:gap-3">
-                        <span className="text-xl md:text-2xl">🧊</span>
-                        <span className="font-bold text-base md:text-lg uppercase tracking-wider">Gelo</span>
-                        </div>
-                        <div className="flex-1 border-b-2 border-dashed border-[#005C53]/20 mx-2 md:mx-3 mb-1 opacity-30"></div>
-                        <span className="font-display text-2xl md:text-3xl text-[#005C53]">{calculation.ice}kg</span>
-                    </div>
-                  </li>
-                </ul>
-
-                {/* Warning Box */}
-                <div className={`
-                  p-3 md:p-4 border-l-4 text-xs md:text-sm font-bold leading-relaxed
-                  ${vibe === 'Inimigo do Fim' 
-                    ? 'bg-[#FFF3CD] text-[#856404] border-[#FF9E1B]' 
-                    : 'bg-[#005C53]/5 text-[#005C53] border-[#005C53]'
-                  }
-                `}>
-                  <div className="flex gap-2 mb-1">
-                    <Info size={14} className="shrink-0 mt-0.5" />
-                    <span className="uppercase font-display tracking-wide text-[10px] md:text-xs">Dica do Experiente:</span>
+                    <Sparkles className="text-[#FF66C4] w-6 h-6 md:w-8 md:h-8" />
                   </div>
-                  {calculation.comment}
-                </div>
 
-                {/* Decorative Holes for Ticket Effect */}
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#005C53] rounded-full"></div>
-              </div>
+                  {/* Lista de Itens */}
+                  <ul className="space-y-4 md:space-y-5 mb-6 md:mb-8">
+                    {selectedDrinks.includes('Cerveja') && (
+                      <li className="flex justify-between items-end group">
+                        <div className="flex items-center gap-2 md:gap-3">
+                          <Beer className="text-[#FF9E1B] w-5 h-5 md:w-6 md:h-6" />
+                          <span className="font-bold text-base md:text-lg">Cerveja</span>
+                        </div>
+                        <div className="flex-1 border-b-2 border-dashed border-[#005C53]/20 mx-2 md:mx-3 mb-1 opacity-30"></div>
+                        <span className="font-display text-xl md:text-2xl text-[#D12E4B]">{calculation.beer} <span className="text-xs md:text-sm text-[#005C53]">latas</span></span>
+                      </li>
+                    )}
+                    
+                    {selectedDrinks.includes('Destilados') && (
+                      <>
+                        <li className="flex justify-between items-end">
+                          <div className="flex items-center gap-2 md:gap-3">
+                            <GlassWater className="text-[#FF9E1B] w-5 h-5 md:w-6 md:h-6" />
+                            <span className="font-bold text-base md:text-lg">Destilado</span>
+                          </div>
+                          <div className="flex-1 border-b-2 border-dashed border-[#005C53]/20 mx-2 md:mx-3 mb-1 opacity-30"></div>
+                          <span className="font-display text-lg md:text-xl text-[#D12E4B]">{calculation.spirits}</span>
+                        </li>
+                        <li className="flex justify-between items-end">
+                          <div className="flex items-center gap-2 pl-2 opacity-70">
+                            <span className="font-bold text-xs md:text-sm uppercase">↳ Mixer</span>
+                          </div>
+                          <div className="flex-1 border-b-2 border-dashed border-[#005C53]/20 mx-2 md:mx-3 mb-1 opacity-30"></div>
+                          <span className="font-bold text-xs md:text-sm text-[#005C53] uppercase">{calculation.mixers}</span>
+                        </li>
+                      </>
+                    )}
+
+                    {selectedDrinks.includes('Água') && (
+                      <li className="flex justify-between items-end">
+                        <div className="flex items-center gap-2 md:gap-3">
+                          <Droplets className="text-[#FF9E1B] w-5 h-5 md:w-6 md:h-6" />
+                          <span className="font-bold text-base md:text-lg">Água</span>
+                        </div>
+                        <div className="flex-1 border-b-2 border-dashed border-[#005C53]/20 mx-2 md:mx-3 mb-1 opacity-30"></div>
+                        <span className="font-display text-xl md:text-2xl text-[#D12E4B]">{calculation.water} <span className="text-xs md:text-sm text-[#005C53]">garrafas</span></span>
+                      </li>
+                    )}
+
+                    <li className="pt-3 md:pt-4 mt-3 md:mt-4 border-t-4 border-dashed border-[#005C53]/10">
+                      <div className="flex justify-between items-end">
+                          <div className="flex items-center gap-2 md:gap-3">
+                          <span className="text-xl md:text-2xl">🧊</span>
+                          <span className="font-bold text-base md:text-lg uppercase tracking-wider">Gelo</span>
+                          </div>
+                          <div className="flex-1 border-b-2 border-dashed border-[#005C53]/20 mx-2 md:mx-3 mb-1 opacity-30"></div>
+                          <span className="font-display text-2xl md:text-3xl text-[#005C53]">{calculation.ice}kg</span>
+                      </div>
+                    </li>
+                  </ul>
+
+                  {/* Warning Box */}
+                  <div className={`
+                    p-3 md:p-4 border-l-4 text-xs md:text-sm font-bold leading-relaxed
+                    ${vibe === 'Inimigo do Fim' 
+                      ? 'bg-[#FFF3CD] text-[#856404] border-[#FF9E1B]' 
+                      : 'bg-[#005C53]/5 text-[#005C53] border-[#005C53]'
+                    }
+                  `}>
+                    <div className="flex gap-2 mb-1">
+                      <Info size={14} className="shrink-0 mt-0.5" />
+                      <span className="uppercase font-display tracking-wide text-[10px] md:text-xs">Dica do Experiente:</span>
+                    </div>
+                    {calculation.comment}
+                  </div>
+
+                  {/* Decorative Holes for Ticket Effect */}
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#005C53] rounded-full"></div>
+                </div>
+              ) : (
+                /* Estado Vazio (Placeholder) */
+                <div className="h-full min-h-[400px] border-4 border-white/20 border-dashed flex flex-col items-center justify-center text-center p-8 opacity-50">
+                   <Refrigerator className="w-24 h-24 mb-6 text-white" strokeWidth={1} />
+                   <p className="font-display text-2xl uppercase text-white mb-2">Cooler Vazio</p>
+                   <p className="text-white text-sm max-w-xs">
+                     Selecione suas bebidas ao lado e clique em calcular para ver a sugestão ideal.
+                   </p>
+                </div>
+              )}
             </div>
           </div>
 
