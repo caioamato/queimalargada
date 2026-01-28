@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Copy, CheckCircle2, Plus, Minus, Send, Users } from 'lucide-react';
 import { LoteType } from '../App';
+import qecodeImg from '../assets/qecode.png';
 
 // --- CONFIGURAÇÃO ---
 const WHATSAPP_NUMBER = "5548991861568"; // Configure o número aqui (DDI + DDD + Número)
@@ -182,7 +183,7 @@ const Tickets: React.FC<TicketsProps> = ({ price, loteStatus }) => {
               <div className="flex flex-col items-center gap-4">
                  <div className="bg-[#005C53]/5 p-2 border-2 border-[#005C53] relative">
                     <img 
-                      src="qecode.png" 
+                      src={qecodeImg} 
                       alt="QR Code PIX" 
                       className="w-[140px] h-[140px] md:w-[180px] md:h-[180px] object-cover"
                     />

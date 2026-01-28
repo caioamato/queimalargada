@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { MapPin, ExternalLink } from 'lucide-react';
+import sitioImg from '../assets/sitio.png';
 
 const Location: React.FC = () => {
   const mapsUrl = "https://maps.app.goo.gl/XmVBhZb6YqsMJhyK7?g_st=iw";
@@ -39,7 +40,7 @@ const Location: React.FC = () => {
            onClick={() => window.open(mapsUrl, '_blank')}>
         <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors z-10"></div>
         <img 
-          src="sitio.png" 
+          src={sitioImg} 
           alt="Vista do Local" 
           className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
         />
