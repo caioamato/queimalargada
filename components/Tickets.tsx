@@ -164,6 +164,8 @@ const Tickets: React.FC<TicketsProps> = ({ price, loteStatus }) => {
                   <input
                     key={index}
                     type="text"
+                    autoCapitalize="words"
+                    autoComplete="name"
                     value={name}
                     onChange={(e) => handleNameChange(index, e.target.value)}
                     placeholder={`Nome completo convidado ${index + 1}`}

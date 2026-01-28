@@ -586,6 +586,10 @@ const FooterGame: React.FC = () => {
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
+      // Allow typing in inputs without triggering game actions
+      const target = e.target as HTMLElement;
+      if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') return;
+
       if (e.code === 'Space' || e.code === 'ArrowUp') {
         e.preventDefault();
         handleTap();
