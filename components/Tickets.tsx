@@ -118,9 +118,9 @@ const Tickets: React.FC<TicketsProps> = ({ price, loteStatus }) => {
 
             {/* Alerta de Instruções */}
             <div className="brutalist-card bg-[#FFF3CD] p-4 md:p-6 border-4 border-[#FF9E1B] shadow-[4px_4px_0px_0px_#005C53] md:shadow-[6px_6px_0px_0px_#005C53] animate-pulse-brutal">
-              <p className="text-[#005C53] text-sm md:text-base font-bold leading-tight">
+              <p className="text-[#005C53] text-xs md:text-sm font-bold leading-tight">
                 Bora garantir o ingresso? Preencha os nomes da galera com atenção e clique no botão do Zap! 
-                <span className="block mt-2 text-[#D12E4B] uppercase font-black">
+                <span className="block mt-2 text-[#D12E4B] uppercase font-black text-[10px] md:text-xs">
                   Agora com os nomes confirmados e a conversa aberta no whats, faça o pix e mande o comprovante na mesma conversa, assim já começa a contagem regressiva! 🎉
                 </span>
               </p>
