@@ -10,39 +10,6 @@ const CHAVE_PIX = "48991861568"; // Chave para o payload dinâmico
 const NOME_BENEFICIARIO = "Caio Amato";
 const CIDADE_BENEFICIARIO = "Floripa";
 
-// --- FUNÇÃO GERADORA DE PAYLOAD PIX DINÂMICO ---
-const generatePixPayload = (chave: string, valor: string, nome: string, cidade: string) => {
-  const nomeTratado = nome.substring(0, 25);
-  const cidadeTratada = cidade.substring(0, 15);
-  const valorFormatado = parseFloat(valor).toFixed(2);
-  
-  const payload = [
-    "000201",
-    "26", (14 + chave.length).toString().padStart(2, '0') + "0014br.gov.bcb.pix01" + chave.length.toString().padStart(2, '0') + chave,
-    "52040000",
-    "5303986",
-    "54", valorFormatado.length.toString().padStart(2, '0') + valorFormatado,
-    "5802BR",
-    "59", nomeTratado.length.toString().padStart(2, '0') + nomeTratado,
-    "60", cidadeTratada.length.toString().padStart(2, '0') + cidadeTratada,
-    "62070503***6304" 
-  ].join('');
-
-  const crc16 = (buffer: string) => {
-    let crc = 0xFFFF;
-    for (let i = 0; i < buffer.length; i++) {
-      crc = ((crc >> 8) | (crc << 8)) & 0xFFFF;
-      crc ^= (buffer.charCodeAt(i) & 0xFF00);
-      crc ^= ((crc >> 4) | (crc << 12)) & 0xFFFF;
-      crc ^= ((crc >> 5) | (crc << 11)) & 0xFFFF;
-      crc ^= ((crc >> 12) | (crc << 5)) & 0xFFFF;
-    }
-    return crc.toString(16).toUpperCase().padStart(4, '0');
-  };
-
-  return payload + crc16(payload);
-};
-
 interface TicketsProps {
   price: number;
   loteStatus: LoteType;
@@ -86,13 +53,8 @@ const Tickets: React.FC<TicketsProps> = ({ price, loteStatus }) => {
 
   const theme = getTicketTheme();
 
-  // Payload PIX muda sempre que o preço total muda
-  const pixCode = useMemo(() => {
-    return generatePixPayload(CHAVE_PIX, totalPrice.toString(), NOME_BENEFICIARIO, CIDADE_BENEFICIARIO);
-  }, [totalPrice]);
-
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(pixCode);
+    navigator.clipboard.writeText(CHAVE_PIX);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -196,12 +158,12 @@ const Tickets: React.FC<TicketsProps> = ({ price, loteStatus }) => {
               </div>
 
               <div className="space-y-2 text-left">
-                <label className="font-display text-[10px] text-[#005C53] uppercase">PIX COPIA E COLA:</label>
+                <label className="font-display text-[10px] text-[#005C53] uppercase">CHAVE PIX (CELULAR):</label>
                 <div className="flex gap-2">
                   <input 
                     type="text" 
                     readOnly 
-                    value={pixCode}
+                    value={CHAVE_PIX}
                     className="flex-1 bg-[#005C53]/5 border-2 border-[#005C53] p-2 md:p-3 font-bold text-[#005C53] text-[10px] overflow-hidden text-ellipsis whitespace-nowrap rounded-none"
                   />
                   <button 
