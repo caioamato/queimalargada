@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://caioamato.github.io/queimalargada/",
+  "homepage": "https://queimalargada.shop",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
