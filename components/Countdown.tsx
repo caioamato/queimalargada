@@ -8,8 +8,8 @@ interface CountdownProps {
 }
 
 const Countdown: React.FC<CountdownProps> = ({ loteStatus }) => {
-  const viradaLoteDate = new Date('2026-02-01T00:00:00').getTime();
-  const diaFestaDate = new Date('2026-02-07T20:00:00').getTime();
+  const viradaLoteDate = new Date(2026, 1, 1).getTime();
+  const diaFestaDate = new Date(2026, 1, 7, 20, 0, 0).getTime();
   
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
