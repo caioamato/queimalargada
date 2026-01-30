@@ -61,12 +61,12 @@ const Tickets: React.FC<TicketsProps> = ({ price, loteStatus }) => {
 
   const generateWhatsAppUrl = () => {
     const namesList = guestNames.map((n, i) => `${i + 1}. ${n}`).join('%0A');
-    const message = `Olá! Acabei de fazer o PIX para o Queimei a Largada! 🥁%0A%0A` +
+    const message = `Olá! Acabei de fazer o PIX para a festa Queimei a Largada! 🥁%0A%0A` +
                     `*DETALHES DO PEDIDO:*%0A` +
                     `• Qtd: ${quantity} ingresso(s)%0A` +
                     `• Valor Total: R$ ${totalPrice},00%0A%0A` +
                     `*NOMES PARA A LISTA:*%0A${namesList}%0A%0A` +
-                    `Estou enviando o comprovante em anexo! ✅`;
+                    `Vou fazer o PIX e enviar o comprovante a seguir! ✅`;
     
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
   };
