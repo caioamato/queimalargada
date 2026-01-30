@@ -59,17 +59,25 @@ const Tickets: React.FC<TicketsProps> = ({ price, loteStatus }) => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const generateWhatsAppUrl = () => {
-    const namesList = guestNames.map((n, i) => `${i + 1}. ${n}`).join('%0A');
-    const message = `Olá! Acabei de fazer o PIX para a festa Queimei a Largada! %0A%0A` +
-                    `*DETALHES DO PEDIDO:*%0A` +
-                    `• Qtd: ${quantity} ingresso(s)%0A` +
-                    `• Valor Total: R$ ${totalPrice},00%0A%0A` +
-                    `*NOMES PARA A LISTA:*%0A${namesList}%0A%0A` +
-                    `Vou fazer o PIX e enviar o comprovante a seguir! `;
-    
-    return `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
-  };
+ const generateWhatsAppUrl = () => {
+  // 1. Usa \n para quebrar linhas e monta a lista limpa
+  const namesList = guestNames.map((n, i) => `${i + 1}. ${n}`).join('\n');
+  
+  // 2. Monta a mensagem normal, visualmente limpa (sem %0A)
+  const message = `Olá! Acabei de fazer o PIX para a festa Queimei a Largada!
+
+*DETALHES DO PEDIDO:*
+• Qtd: ${quantity} ingresso(s)
+• Valor Total: R$ ${totalPrice},00
+
+*NOMES PARA A LISTA:*
+${namesList}
+
+Vou fazer o PIX e enviar o comprovante a seguir!`;
+
+  // 3. O SEGREDO: encodeURIComponent resolve todos os acentos e os 
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+};
 
   return (
     <div className="brutalist-card bg-white/95 p-4 sm:p-8 md:p-12 relative overflow-hidden border-[#005C53] border-[4px] md:border-[6px]">
