@@ -158,19 +158,9 @@ const Lineup: React.FC = () => {
       </div>
 
       {/* Extras Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 pt-2 md:pt-4">
-        <div className="brutalist-card bg-[#FF9E1B] p-4 md:p-6 text-center group hover:bg-[#005C53] transition-all border-[#005C53] shadow-[4px_4px_0px_0px_#005C53] md:shadow-[6px_6px_0px_0px_#005C53]">
-          <Headphones className="mx-auto mb-2 md:mb-3 text-[#005C53] group-hover:text-[#FF9E1B]" size={32} />
-          <span className="font-display text-lg md:text-2xl text-[#005C53] group-hover:text-white uppercase tracking-tighter">DJ SETS</span>
-        </div>
-        
-        <div className="brutalist-card bg-white p-4 md:p-6 text-center flex flex-col items-center justify-center gap-2 md:gap-3 border-[#005C53] shadow-[4px_4px_0px_0px_#D12E4B] md:shadow-[6px_6px_0px_0px_#D12E4B]">
-          <Ghost size={32} className="text-[#D12E4B] animate-bounce" />
-          <span className="font-display text-lg md:text-2xl text-[#005C53] uppercase tracking-tighter leading-none text-center">SURPRESAS 👀</span>
-        </div>
 
         <div className="brutalist-card bg-[#D12E4B] text-white p-4 md:p-6 text-center font-display text-lg md:text-2xl sm:col-span-2 md:col-span-1 border-[#005C53] shadow-[4px_4px_0px_0px_#FF9E1B] md:shadow-[6px_6px_0px_0px_#FF9E1B] flex items-center justify-center uppercase tracking-tighter">
-          🍹 OPEN COOLER
+          🍹 VAI TER CHOPE VENDENDO E VAI SER OPEN COOLER 👀
         </div>
       </div>
     </div>
