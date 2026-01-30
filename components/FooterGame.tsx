@@ -6,9 +6,9 @@ import { Trophy, RefreshCw, Play, Beer as BeerIcon, Music, Clock, Sparkles } fro
 const GAME_CONFIG = {
   GRAVITY: 0.6,
   JUMP_STRENGTH: -12,
-  SPEED: 6,
+  SPEED: 4,
   MAX_BEERS: 3, // Limite para dar PT
-  VICTORY_TIME_SEC: 25, // Tempo para chegar na festa
+  VICTORY_TIME_SEC: 20, // Tempo para chegar na festa
   FPS: 60
 };
 
