@@ -215,10 +215,10 @@ Vou fazer o PIX e enviar o comprovante a seguir!`;
             <div className="flex items-center gap-2 md:gap-3">
               <Send size={20} className={isFormValid ? "group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform md:w-6 md:h-6" : "md:w-6 md:h-6"} />
               <span className="font-display text-lg md:text-3xl uppercase tracking-tighter">
-                ENVIAR COMPROVANTE
+                ENVIAR NOMES NA LISTA
               </span>
             </div>
-            <span className="text-[10px] md:text-xs font-black opacity-70 uppercase px-4 text-center">
+            <span className="text-[10px] md:text-xs font-black opacity-60 uppercase px-4 text-center">
               {isFormValid ? "Finalize enviando no WhatsApp!" : "Preencha os nomes acima para liberar"}
             </span>
           </a>
