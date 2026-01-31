@@ -40,7 +40,7 @@ const Lineup: React.FC = () => {
             </div>
             <h3 className="font-display text-2xl md:text-4xl text-[#005C53] mb-2 uppercase leading-none">TATU E A TOCA</h3>
             <p className="font-bold text-sm md:text-lg text-[#005C53]/80 italic border-l-4 border-[#FF66C4] pl-3 mb-4">
-              O puro suco do axé e do samba para suar a camisa.
+              Música para dançar e suar a camisa.
             </p>
             <a href="https://www.instagram.com/tatueatoca?igsh=ajN3a3oxbXF0N2Zt" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-bold text-[#D12E4B] hover:underline uppercase">
               <Instagram size={16} /> Ver no Instagram
@@ -77,7 +77,7 @@ const Lineup: React.FC = () => {
             </div>
             <h3 className="font-display text-2xl md:text-4xl text-[#FF9E1B] mb-2 uppercase leading-none">DU DE CANÁRIO</h3>
             <p className="font-bold text-sm md:text-lg text-white/80 italic border-l-4 border-[#D12E4B] pl-3 mb-4">
-              Brasileiridades e clássicos para cantar junto até o sol nascer.
+              Composições autorais e Brasilidades para cantar junto até o sol nascer.
             </p>
             <a href="https://www.instagram.com/dudecanariooficial?igsh=MXA3MTE2amVybGJscA==" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-bold text-white hover:text-[#FF9E1B] hover:underline uppercase transition-colors">
               <Instagram size={16} /> Ver no Instagram
