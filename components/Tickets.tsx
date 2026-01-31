@@ -64,9 +64,11 @@ const Tickets: React.FC<TicketsProps> = ({ price, loteStatus }) => {
   const namesList = guestNames.map((n, i) => `${i + 1}. ${n}`).join('\n');
   
   // 2. Monta a mensagem normal, visualmente limpa (sem %0A)
-  const message = `Olá! Acabei de fazer o PIX para a festa Queimei a Largada!
+  const message = `Oi! Estou enviado os nomes para lista!
 
 *DETALHES DO PEDIDO:*
+
+CHAVE PARA PIX - *48991861568* 
 • Qtd: ${quantity} ingresso(s)
 • Valor Total: R$ ${totalPrice},00
 
