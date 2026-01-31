@@ -8,7 +8,7 @@ const GAME_CONFIG = {
   JUMP_STRENGTH: -12,
   SPEED: 4,
   MAX_BEERS: 3, // Limite para dar PT
-  VICTORY_TIME_SEC: 20, // Tempo para chegar na festa
+  VICTORY_TIME_SEC: 13, // Tempo para chegar na festa
   FPS: 60
 };
 
