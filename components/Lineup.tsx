@@ -163,7 +163,6 @@ const Lineup: React.FC = () => {
           🍹 VAI TER CHOPE VENDENDO E VAI SER OPEN COOLER 👀
         </div>
       </div>
-    </div>
   );
 };
 
