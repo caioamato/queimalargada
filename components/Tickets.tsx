@@ -129,7 +129,7 @@ Vou fazer o PIX e enviar o comprovante a seguir!`;
               <p className="text-[#005C53] text-xs md:text-sm font-bold leading-tight">
                 Bora garantir o ingresso? Preencha os nomes da galera com atenção e clique no botão do Zap! 
                 <span className="block mt-2 text-[#D12E4B] uppercase font-black text-[10px] md:text-xs">
-                  Agora com os nomes confirmados e a conversa aberta no whats, faça o pix e mande o comprovante na mesma conversa, assim já começa a contagem regressiva! 🎉
+                  Atenção aos nomes adicionados a lista abaixo: após iniciar a conversa no WhatsApp, realize o Pix e envie o comprovante na mesma conversa para iniciar a contagem regressiva! 🎉
                 </span>
               </p>
             </div>
