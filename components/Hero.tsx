@@ -50,8 +50,8 @@ const Hero: React.FC = () => {
         </p>
       </div>
 
-      {/* Seta indicativa de scroll */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce text-[#005C53]">
+      {/* Seta indicativa de scroll - CORREÇÃO DE ALINHAMENTO */}
+      <div className="absolute bottom-4 left-0 w-full flex justify-center animate-bounce text-[#005C53]">
         <ChevronDown size={40} strokeWidth={3} />
       </div>
 
