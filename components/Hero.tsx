@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Calendar, Clock, Ticket } from 'lucide-react';
+import { Calendar, Clock, Ticket, ChevronDown } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const scrollToTickets = () => {
@@ -49,6 +48,11 @@ const Hero: React.FC = () => {
         <p className="mt-4 md:mt-6 font-display text-xs md:text-base uppercase tracking-widest text-[#005C53] bg-white/60 px-4 py-2 border-2 border-[#005C53] border-dashed">
           Venha queimar a largada com a gente! 💫
         </p>
+      </div>
+
+      {/* Seta indicativa de scroll */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce text-[#005C53]">
+        <ChevronDown size={40} strokeWidth={3} />
       </div>
 
       {/* Background patterns */}
