@@ -129,7 +129,7 @@ Vou fazer o PIX e enviar o comprovante a seguir!`;
               <p className="text-[#005C53] text-xs md:text-sm font-bold leading-tight">
                 Bora garantir o ingresso? Chama a galera e manda Zap! 
                 <span className="block mt-2 text-[#D12E4B] uppercase font-black text-[10px] md:text-xs">
-                  Atenção: adicione os nomes à lista abaixo. Após iniciar a conversa no WhatsApp, realize o Pix e envie o comprovante na mesma conversa e daí é só correr pro abraço! 🎉
+                  Atenção: adicione os nomes à lista abaixo. Após iniciar a conversa no WhatsApp, realize o Pix e envie o comprovante na mesma conversa. Feito pode correr pro abraço! 🎉
                 </span>
               </p>
             </div>
