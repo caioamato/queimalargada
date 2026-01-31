@@ -88,7 +88,7 @@ const Countdown: React.FC<CountdownProps> = ({ loteStatus }) => {
         <div className="relative group w-full max-w-lg">
           <div className="absolute inset-0 bg-[#005C53] translate-x-1 translate-y-1 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform"></div>
           <p className="relative font-display text-sm md:text-2xl text-[#005C53] bg-white px-4 md:px-8 py-3 md:py-4 border-2 md:border-4 border-[#005C53] uppercase leading-tight">
-            {loteStatus === 'LOTE_1' ? 'CORRE! DIA 01/FEV SOBE PRA R$ 25 🏃💨' : 'ÚLTIMOS INGRESSOS ANTECIPADOS! 🏃💨'}
+            {loteStatus === 'LOTE_1' ? 'CORRE! DIA 02/FEV ÀS 23:59:59 SOBE PRA R$ 25 🏃💨' : 'ÚLTIMOS INGRESSOS ANTECIPADOS! 🏃💨'}
           </p>
         </div>
       </div>
