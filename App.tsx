@@ -111,7 +111,7 @@ const App: React.FC = () => {
         <p className="text-[#FF66C4] font-display text-base md:text-xl mb-6 md:mb-8 tracking-[0.3em] md:tracking-[0.5em] uppercase">Edição 2026</p>
         <div className="h-1 md:h-2 w-16 md:w-24 bg-white mx-auto mb-6 md:mb-8"></div>
         <p className="text-xs md:text-base opacity-60 max-w-md mx-auto leading-relaxed px-4">
-          Evento destinado a maiores de 18 anos. Beba com inteligência. Se dirigir, não beba. Não seja babaca Respeite as minas!
+          Evento destinado a maiores de 18 anos. Beba com inteligência. Se dirigir, não beba. Não seja babaca Respeite as minas!<br>ATENÇÃO: NO DIA DO EVENTO, NÃO VAMOS ESTORNAR OS INGRESSOS!</br>
         </p>
       </footer>
     </div>
